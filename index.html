@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login and Register</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      transition: background-color 0.3s ease;
+    }
+
+    .container {
+      position: relative;
+      width: 300px;
+      padding: 20px;
+      background: #e0e0e0;
+      border: 1px solid #ccc;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      z-index: 2;
+    }
+
+    .form-box {
+      margin-bottom: 20px;
+    }
+
+    .form-box h2 {
+      margin-bottom: 10px;
+      color: #333;
+      font-size: 26px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    input[type="text"], input[type="password"], input[type="submit"] {
+      padding: 18px;
+      margin-bottom: 15px;
+      font-size: 20px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      width: 100%;
+    }
+
+    .btn {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+      padding: 14px; /* Adjusted padding to make buttons smaller */
+      border-radius: 4px;
+      width: 100%;
+      max-width: 100%; /* Ensure button width matches input fields */
+      text-align: center;
+      font-size: 18px; /* Adjusted font size to make buttons smaller */
+    }
+
+    .btn:hover {
+      background-color: #45a049;
+    }
+
+    .mode-btn-container {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      z-index: 1000;
+    }
+
+    .dark-mode-btn {
+      margin-bottom: 10px;
+      max-width: 100%; /* Ensure button width matches input fields */
+    }
+
+    .gay-mode-btn {
+      margin-bottom: 10px;
+      max-width: 100%; /* Ensure button width matches input fields */
+    }
+
+    .default-mode-btn {
+      margin-bottom: 10px;
+      max-width: 100%; /* Ensure button width matches input fields */
+    }
+
+    /* Dark mode styles */
+    body.dark-mode {
+      background-color: #222;
+    }
+
+    body.dark-mode .container {
+      background: #333;
+      border-color: #555;
+    }
+
+    body.dark-mode .form-box {
+      background: #333;
+    }
+
+    body.dark-mode .form-box h2 {
+      color: #fff;
+    }
+
+    body.dark-mode input[type="text"],
+    body.dark-mode input[type="password"],
+    body.dark-mode input[type="submit"] {
+      background-color: #444;
+      color: #fff;
+      border: 1px solid #666;
+    }
+
+    body.dark-mode .mode-btn-container .btn {
+      background-color: #d32f2f; /* Deepest red for mode buttons in dark mode */
+      color: white; /* Text color for mode buttons in dark mode */
+    }
+
+    body.dark-mode .btn:hover {
+      background-color: #b71c1c; /* Darker red on hover for register/login buttons in dark mode */
+      color: white; /* Text color on hover for register/login buttons in dark mode */
+    }
+
+    /* Gay mode styles */
+    body.gay-mode {
+      background-color: #ff9ff3;
+    }
+
+    body.gay-mode .container {
+      background: rgba(255, 182, 193, 0.8);
+      border: 1px solid #ff69b4;
+      box-shadow: 0 0 10px rgba(255, 105, 180, 0.5);
+      position: relative;
+      z-index: 2;
+    }
+
+    body.gay-mode .form-box {
+      background: rgba(255, 182, 193, 0.8);
+      color: #333;
+    }
+
+    body.gay-mode .form-box h2 {
+      color: #333;
+    }
+
+    body.gay-mode input[type="text"],
+    body.gay-mode input[type="password"],
+    body.gay-mode input[type="submit"] {
+      background-color: #fff;
+      color: #333;
+      border: 1px solid #ff69b4;
+    }
+
+    body.gay-mode .btn {
+      background-color: #ff69b4;
+    }
+
+    body.gay-mode .btn:hover {
+      background-color: #ff1493;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="form-box">
+      <h2>Login</h2>
+      <form action="#">
+        <input type="text" placeholder="Username" name="username" minlength="1" maxlength="25" required>
+        <input type="password" placeholder="Password" name="password" minlength="1" maxlength="50" required>
+        <input type="submit" class="btn" value="Login">
+      </form>
+    </div>
+    
+    <div class="form-box">
+      <h2>Register</h2>
+      <form action="#">
+        <input type="text" placeholder="Username" name="new-username" minlength="1" maxlength="25" required>
+        <input type="password" placeholder="Password" name="new-password" minlength="1" maxlength="50" required>
+        <input type="submit" class="btn" value="Register">
+      </form>
+    </div>
+  </div>
+
+  <div class="mode-btn-container">
+    <button class="dark-mode-btn btn" onclick="toggleDarkMode()">Dark Mode</button>
+    <button class="gay-mode-btn btn" onclick="toggleGayMode()">Arch Linux ahh user</button>
+    <button class="default-mode-btn btn" onclick="setToDefaultMode()">Default Mode</button>
+  </div>
+
+  <script>
+    function toggleDarkMode() {
+      const body = document.body;
+      body.classList.remove('gay-mode');
+      body.classList.add('dark-mode');
+    }
+
+    function toggleGayMode() {
+      const body = document.body;
+      body.classList.remove('dark-mode');
+      body.classList.add('gay-mode');
+    }
+
+    function setToDefaultMode() {
+      const body = document.body;
+      body.classList.remove('dark-mode');
+      body.classList.remove('gay-mode');
+    }
+  </script>
+</body>
+</html>
+
